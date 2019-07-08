@@ -1,0 +1,128 @@
+<form class="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm" novalidate>
+    <div class="form-content">
+        <h3>STUDENTS</h3>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="firstName">First Name *</label>
+                    <input type="text" class="form-control" placeholder="First Name" [(ngModel)]="model.firstName" #firstName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && firstName.invalid }" required/>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="lastName">Last Name *</label>
+                    <input type="text" class="form-control" placeholder="Last Name" [(ngModel)]="model.lastName" #lastName="ngModel" [ngClass]="{ 'is-invalid': f.submitted && lastName.invalid }" required/>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="address">Address *</label>
+                    <input type="text" class="form-control" placeholder="Address" [(ngModel)]="model.address" #address="ngModel" [ngClass]="{ 'is-invalid': f.submitted && address.invalid }" required/>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="school">School *</label>
+                    <input type="text" class="form-control"  placeholder="School" [(ngModel)]="model.school" #school="ngModel" [ngClass]="{ 'is-invalid': f.submitted && school.invalid }" required/>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="age">Age *</label>
+                    <input type="number" class="form-control"   placeholder="Age"  min="0" step="1" [(ngModel)]="model.age" #age="ngModel" [ngClass]="{ 'is-invalid': f.submitted && age.invalid }" required/>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input type="email" class="form-control"  placeholder="Email" [(ngModel)]="model.email" #age="ngModel" [ngClass]="{ 'is-invalid': f.submitted && email.invalid }" required/>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="homeTelephone">Telephone(Home) *</label>
+                    <input type="text" class="form-control" placeholder="+94 23 456 789" [(ngModel)]="model.homeTelephone" #homeTelephone="ngModel" [ngClass]="{ 'is-invalid': f.submitted && homeTelephone.invalid }" required maxlength="12"/>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label for="mobileTelephone">Telephone(Mobile)</label>
+                    <input type="text" class="form-control" id="mobileTelephone" placeholder="+94 77 123 456" [(ngModel)]="model.mobileTelephone" #mobileTelephone="ngModel" [ngClass]="{ 'is-invalid': f.submitted && mobileTelephone.invalid }"  maxlength="12"/>
+                </div>
+            </div>
+        </div>
+        <button type="reset" class="btn btn-secondary mr-2">Reset</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    
+            <div class="row">
+                <div class="col-md-12 mt-3">
+                    <table class="table table-sm table-striped">
+                        <thead>
+                          <tr>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Address</th>
+                            <th>School</th>
+                            <th>Age</th>
+                            <th>Email</th>
+                            <th>Telephone(Home)</th>
+                            <th>Telephone(Mobile)</th>
+                            <th>&nbsp;</th>
+                            <th>&nbsp;</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>John</td>
+                            <td>Doe</td>
+                            <td>54, Attidiya road, Ratmalana</td>
+                            <td>School here</td>
+                            <td>12</td>
+                            <td>kusalgayan18@gmail.com</td>
+                            <td>+94 11 261 1988</td>
+                            <td>+94 71 977 3256</td>
+                            <td class="edit"><button class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></button></td>
+                              <td class="edit"><button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button></td>
+                          </tr>
+                          <tr>
+                            <td>John</td>
+                            <td>Doe</td>
+                            <td>54, Attidiya road, Ratmalana</td>
+                            <td>School here</td>
+                            <td>12</td>
+                            <td>kusalgayan18@gmail.com</td>
+                            <td>+94 11 261 1988</td>
+                            <td>+94 71 977 3256</td>
+                            <td class="edit"><button class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></button></td>
+                              <td class="edit"><button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button></td>
+                          </tr>
+                            <tr>
+                            <td>John</td>
+                            <td>Doe</td>
+                            <td>54, Attidiya road, Ratmalana</td>
+                            <td>School here</td>
+                            <td>12</td>
+                            <td>kusalgayan18@gmail.com</td>
+                            <td>+94 11 261 1988</td>
+                            <td>+94 71 977 3256</td>
+                            <td class="edit"><button class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></button></td>
+                              <td class="edit"><button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button></td>
+                          </tr>
+                            <tr>
+                            <td>John</td>
+                            <td>Doe</td>
+                            <td>54, Attidiya road, Ratmalana</td>
+                            <td>School here</td>
+                            <td>12</td>
+                            <td>kusalgayan18@gmail.com</td>
+                            <td>+94 11 261 1988</td>
+                            <td>+94 71 977 3256</td>
+                            <td class="edit"><button type="button" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></button></td>
+                            <td class="edit"><button type="button" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                </div>
+            </div>
+        </div>
+</form>
