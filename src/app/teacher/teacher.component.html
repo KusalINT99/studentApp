@@ -1,106 +1,104 @@
-<form class="form">
-    <div class="form-content">
-        <h3>TEACHERS</h3>
+<div class="form-content">
+    <div *ngIf="isSave" class="alert alert-success" role="alert">
+        Teacher Added Sucessfully
+    </div>
+    <h3>TEACHERS</h3>
+    <form [formGroup]="teacherForm" (ngSubmit)="onSubmit()">
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="firstName">First Name *</label>
-                    <input type="text" class="form-control" id="firstName" required placeholder="First Name" value=""/>
+                    <input type="text" class="form-control" required placeholder="First Name"
+                        formControlName="firstName" [ngClass]="{'is-invalid': submitted && f.firstName.errors }"
+                        [(ngModel)]='firstName' />
+                    <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                        <div *ngIf="f.firstName.errors.required">First Name is required</div>
+                    </div>
+
+                    <input type="hidden" class="form-control" formControlName="teacherId" [(ngModel)]='teacherId' />
+
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="lastName">Last Name *</label>
-                    <input type="text" class="form-control" id="lastName" required placeholder="Last Name" value=""/>
+                    <input type="text" class="form-control" required placeholder="Last Name" formControlName="lastName"
+                        [ngClass]="{'is-invalid': submitted && f.lastName.errors }" [(ngModel)]='lastName' />
+                    <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+                        <div *ngIf="f.lastName.errors.required">Last Name is required</div>
+                    </div>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="address">Address *</label>
-                    <input type="text" class="form-control" id="address" required placeholder="Address" value=""/>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label for="email">Email *</label>
-                    <input type="email" class="form-control" id="email" required placeholder="Email" value=""/>
+                    <input type="text" class="form-control" required placeholder="Address" formControlName="address"
+                        [ngClass]="{'is-invalid': submitted && f.address.errors }" [(ngModel)]='address' />
+                    <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
+                        <div *ngIf="f.address.errors.required">Address is required</div>
+                    </div>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="form-group">
-                    <label for="homeTelephone">Telephone(Home) *</label>
-                    <input type="text" class="form-control" id="homeTelephone" required placeholder="+94 23 456 789" value="" maxlength="12"/>
+                    <label for="email">Email *</label>
+                    <input type="email" class="form-control" required placeholder="Email" formControlName="email"
+                        [ngClass]="{'is-invalid': submitted && f.email.errors }" [(ngModel)]='email' />
+                    <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                        <div *ngIf="f.email.errors.required">Email is required</div>
+                    </div>
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="form-group">
                     <label for="mobileTelephone">Telephone(Mobile) *</label>
-                    <input type="text" class="form-control" id="mobileTelephone" required placeholder="+94 77 123 456" value="" maxlength="12"/>
+                    <input type="text" class="form-control" required placeholder="+94 77 123 456" maxlength="12"
+                        formControlName="mobileTelephone"
+                        [ngClass]="{ 'is-invalid': submitted && f.mobileTelephone.errors }"
+                        [(ngModel)]='mobileTelephone' maxlength="12" />
+                    <div *ngIf="submitted && f.mobileTelephone.errors" class="invalid-feedback">
+                        <div *ngIf="f.mobileTelephone.errors.required">telephone is required</div>
+                    </div>
                 </div>
             </div>
         </div>
         <button type="reset" class="btn btn-secondary mr-2">Reset</button>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    
-            <div class="row">
-                <div class="col-md-12 mt-3">
-                    <table class="table table-sm table-striped">
-                        <thead>
-                          <tr>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Address</th>
-                            <th>Email</th>
-                            <th>Telephone(Home)</th>
-                            <th>Telephone(Mobile)</th>
-                            <th>&nbsp;</th>
-                            <th>&nbsp;</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td>John</td>
-                            <td>Doe</td>
-                            <td>54, Attidiya road, Ratmalana</td>
-                            <td>kusalgayan18@gmail.com</td>
-                            <td>+94 11 261 1988</td>
-                            <td>+94 71 977 3256</td>
-                            <td class="edit"><button class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></button></td>
-                              <td class="edit"><button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button></td>
-                          </tr>
-                          <tr>
-                            <td>John</td>
-                            <td>Doe</td>
-                            <td>54, Attidiya road, Ratmalana</td>
-                            <td>kusalgayan18@gmail.com</td>
-                            <td>+94 11 261 1988</td>
-                            <td>+94 71 977 3256</td>
-                            <td class="edit"><button class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></button></td>
-                              <td class="edit"><button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button></td>
-                          </tr>
-                            <tr>
-                            <td>John</td>
-                            <td>Doe</td>
-                            <td>54, Attidiya road, Ratmalana</td>
-                            <td>kusalgayan18@gmail.com</td>
-                            <td>+94 11 261 1988</td>
-                            <td>+94 71 977 3256</td>
-                            <td class="edit"><button class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></button></td>
-                              <td class="edit"><button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button></td>
-                          </tr>
-                            <tr>
-                            <td>John</td>
-                            <td>Doe</td>
-                            <td>54, Attidiya road, Ratmalana</td>
-                            <td>kusalgayan18@gmail.com</td>
-                            <td>+94 11 261 1988</td>
-                            <td>+94 71 977 3256</td>
-                            <td class="edit"><button class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></button></td>
-                              <td class="edit"><button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button></td>
-                          </tr>
-                        </tbody>
-                      </table>
-                </div>
-            </div>
+        <button *ngIf="!isUpdate" type="submit" class="btn btn-primary">Add</button>
+        <button *ngIf="isUpdate" type="submit" class="btn btn-primary">Update</button>
+
+
+    </form>
+
+    <div class="row">
+        <div class="col-md-12 mt-3">
+            <table class="table table-sm table-striped">
+                <thead>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Address</th>
+                        <th>Email</th>
+                        <th>Telephone(Mobile)</th>
+                        <th>&nbsp;</th>
+                        <th>&nbsp;</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let teacher of teachers">
+                        <td>{{teacher.firstName}}</td>
+                        <td>{{teacher.lastName}}</td>
+                        <td>{{teacher.address}}</td>
+                        <td>{{teacher.email}}</td>
+                        <td>{{teacher.mobileTelephone}}</td>
+                        <td class="edit"><button (click)="editTeacher(teacher.teacherId)"
+                                class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></button>
+                        </td>
+                        <td class="edit"><button (click)="deleteTeacher(teacher.teacherId)"
+                                class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
-</form>
+    </div>
+</div>

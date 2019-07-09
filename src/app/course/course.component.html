@@ -1,100 +1,90 @@
-<form class="form">
-    <div class="form-content">
-        <h3>COURSES</h3>
-        <div class="row">
-            <div class="col-md-3">
-                <div class="form-group">
-                    <label for="courseName">Course Name *</label>
-                    <input type="text" class="form-control" id="courseName" required placeholder="Course Name" value=""/>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="form-group">
-                    <label for="teacher">Teacher *</label>
-                    <select type="text" class="form-control" id="teacher" required>
-                        <option value="">---Select---</option>
-                    </select>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="form-group">
-                    <label for="courseDuration">Duration (Months) *</label>
-                    <input type="text" class="form-control" id="courseDuration" required placeholder="Course Duration" value=""/>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="form-group">
-                    <label for="courseFee">Fee ($) *</label>
-                    <input type="text" class="form-control" id="courseFee" required placeholder="Course Fee" value=""/>
-                </div>
-            </div>
-            <div class="col-md-12 mb-3">
-                <label for="description">Description *</label>
-                <textarea class="form-control" id="descriptions" rows="5"></textarea>
-            </div>
+<div class="form-content">
+  <h3>COURSES</h3>
+  <form [formGroup]="courseForm" (ngSubmit)="onSubmit()">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="form-group">
+          <label for="courseName">Course Name *</label>
+          <input type="text" class="form-control" required placeholder="Course Name" formControlName="courseName"
+            [ngClass]="{'is-invalid': submitted && f.courseName.errors }" required [(ngModel)]='courseName' />
+          <div *ngIf="submitted && f.courseName.errors" class="invalid-feedback">
+            <div *ngIf="f.courseName.errors.required">Course Name is required</div>
+          </div>
         </div>
-        <button type="reset" class="btn btn-secondary mr-2">Reset</button>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    
-            <div class="row">
-                <div class="col-md-12 mt-3">
-                    <table class="table table-sm table-striped">
-                        <thead>
-                          <tr>
-                            <th>Course Name</th>
-                            <th>Teacher</th>
-                            <th>Duration (Months)</th>
-                            <th>Fee ($)</th>
-                            <th>Description</th>
-                            <th>&nbsp;</th>
-                            <th>&nbsp;</th>
-                            <th>&nbsp;</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td>Dimploma in Web Engineering</td>
-                            <td>John Smith</td>
-                            <td>12</td>
-                            <td>250</td>
-                            <td>Description here...Description here...Description here...Description here...</td>
-                            <td class="assign"><button class="btn btn-secondary btn-sm">Assign Students</button></td>
-                            <td class="edit"><button class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></button></td>
-                            <td class="delete"><button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button></td>
-                          </tr>
-                          <tr>
-                            <td>Dimploma in Web Engineering</td>
-                            <td>John Smith</td>
-                            <td>12</td>
-                            <td>250</td>
-                            <td>Description here...Description here...Description here...Description here...</td>
-                            <td class="assign"><button class="btn btn-secondary btn-sm">Assign Students</button></td>
-                            <td class="edit"><button class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></button></td>
-                            <td class="delete"><button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button></td>
-                          </tr>
-                            <tr>
-                            <td>Dimploma in Web Engineering</td>
-                            <td>John Smith</td>
-                            <td>12</td>
-                            <td>250</td>
-                            <td>Description here...Description here...Description here...Description here...</td>
-                            <td class="assign"><button class="btn btn-secondary btn-sm">Assign Students</button></td>
-                            <td class="edit"><button class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></button></td>
-                            <td class="delete"><button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button></td>
-                          </tr>
-                            <tr>
-                            <td>Dimploma in Web Engineering</td>
-                            <td>John Smith</td>
-                            <td>12</td>
-                            <td>250</td>
-                            <td>Description here...Description here...Description here...Description here...</td>
-                            <td class="assign"><button class="btn btn-secondary btn-sm">Assign Students</button></td>
-                            <td class="edit"><button class="btn btn-primary btn-sm"><i class="fa fa-edit"></i></button></td>
-                            <td class="delete"><button class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button></td>
-                          </tr>
-                        </tbody>
-                      </table>
-                </div>
-            </div>
+        <input type="hidden" class="form-control" formControlName="courseId" [(ngModel)]='courseId' />
+      </div>
+      <div class="col-md-3">
+        <div class="form-group">
+          <label for="teacher">Teacher *</label>
+          <select type="text" formControlName="teacherName" class="form-control">
+            <option *ngFor="let teacher of teachers" [value]="teacher.firstName">{{teacher.firstName}}</option>
+          </select>
         </div>
-</form>
+      </div>
+      <div class="col-md-3">
+        <div class="form-group">
+          <label for="duration">Duration (Months) *</label>
+          <input type="text" class="form-control" required placeholder="Course Duration" formControlName="duration"
+            [ngClass]="{'is-invalid': submitted && f.duration.errors }" required [(ngModel)]='duration' />
+          <div *ngIf="submitted && f.duration.errors" class="invalid-feedback">
+            <div *ngIf="f.duration.errors.required">Duration is required</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="form-group">
+          <label for="courseFee">Fee ($) *</label>
+          <input type="text" class="form-control" required placeholder="Course Fee" formControlName="courseFee"
+            [ngClass]="{'is-invalid': submitted && f.courseFee.errors }" required [(ngModel)]='courseFee' />
+          <div *ngIf="submitted && f.courseFee.errors" class="invalid-feedback">
+            <div *ngIf="f.courseFee.errors.required">Course Fee is required</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12 mb-3">
+        <label for="description">Description *</label>
+        <textarea class="form-control" rows="5" formControlName="description" [(ngModel)]='description'></textarea>
+      </div>
+    </div>
+    <button type="reset" class="btn btn-secondary mr-2">Reset</button>
+    <button *ngIf="!isUpdate" type="submit" class="btn btn-primary">Add</button>
+    <button *ngIf="isUpdate" type="submit" class="btn btn-primary">Update</button>
+
+  </form>
+
+  <div class="row">
+    <div class="col-md-12 mt-3">
+      <table class="table table-sm table-striped">
+        <thead>
+          <tr>
+            <th>Course Name</th>
+            <th>Teacher</th>
+            <th>Duration (Months)</th>
+            <th>Fee ($)</th>
+            <th>Description</th>
+            <th>&nbsp;</th>
+            <th>&nbsp;</th>
+            <th>&nbsp;</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let course of courses">
+            <td>{{course.courseName}}</td>
+            <td>{{course.teacherName}}</td>
+            <td>{{course.duration}}</td>
+            <td>{{course.courseFee}}</td>
+            <td>{{course.description}}</td>
+            <td class="assign"><button class="btn btn-secondary btn-sm"><i class="fa fa-plus"></i> Students</button>
+            </td>
+            <td class="edit"><button (click)="editCourse(course.courseId)" class="btn btn-primary btn-sm"><i
+                  class="fa fa-edit"></i></button>
+            </td>
+            <td class="edit"><button (click)="deleteCourse(course.courseId)" class="btn btn-danger btn-sm"><i
+                  class="fa fa-trash"></i></button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

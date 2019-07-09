@@ -19,6 +19,8 @@
     "@angular/platform-browser": "~8.1.0",
     "@angular/platform-browser-dynamic": "~8.1.0",
     "@angular/router": "~8.1.0",
+    "alertify.js": "^1.0.12",
+    "alertifyjs": "^1.11.4",
     "angular-font-awesome": "^3.1.2",
     "bootstrap": "^4.3.1",
     "font-awesome": "^4.7.0",
